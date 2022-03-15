@@ -57,11 +57,32 @@ public class Position {
 	}
 	
 	/**
+	 * 获取此点到另一个点的向量
+	 * @param other 目标点
+	 * @return 之间的向量
+	 */
+	public Vector getVector(Position other) {
+		Vector vector = new Vector(new Position(other.getX() -
+				this.getX(), other.getY() - this.getY()));	// 直接相减得向量
+		
+		return vector;
+	}
+	
+	/**
 	 * 获取坐标的格式化，格式为(x,y)
 	 * @return 格式化的坐标
 	 */
 	public String getFormat() {
 		return "(" + this.x + "," + this.y + ")";
+	}
+	
+	/**
+	 * 另一个坐标的赋值
+	 * @param pt 被复制的坐标
+	 */
+	public void setPosition(Position pt) {
+		this.setX(pt.getX());
+		this.setY(pt.getY());
 	}
 	
 	//start x，y坐标的存取

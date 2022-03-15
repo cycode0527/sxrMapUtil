@@ -107,6 +107,14 @@ public class Direction {
 		this.setDegree(Math.toDegrees(this.radians)); // 更新角度，并进行越界检测，并更新弧度
 	}
 
+	/**
+	 * 另一个方向赋值
+	 * @param dr 被复制的方向
+	 */
+	public void setDirection(Direction dr) {
+		this.setRadians(dr.getRadians());
+	}
+	
 	@Test
 	public void fun() {
 		Direction di = new Direction();
