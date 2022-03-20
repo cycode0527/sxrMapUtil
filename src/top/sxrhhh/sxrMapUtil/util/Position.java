@@ -10,8 +10,8 @@ package top.sxrhhh.sxrMapUtil.util;
 public class Position {
 
 	// x与y坐标
-	private double x;
-	private double y;
+	protected double x;
+	protected double y;
 	
 	/**
 	 * 空白构造函数
@@ -69,10 +69,33 @@ public class Position {
 	}
 	
 	/**
-	 * 获取坐标的格式化，格式为(x,y)
+	 * 通过向量加法获得另一个点
+	 * @param vec 加上的向量
+	 * @return 另一个点
+	 */
+	public Position vectorPlus(Vector vec) {
+		Position ps = new Position(this.getX() + vec.getPosition().getX(),
+				this.getY() + vec.getPosition().getY()); // 通过坐标直接相加
+		return ps;
+	}
+	
+	/**
+	 * 通过向量减法获得另一个点
+	 * @param vec 减掉的向量
+	 * @return 另一个点
+	 */
+	public Position vectorMinus(Vector vec) {
+		Position ps = new Position(this.getX() - vec.getPosition().getX(),
+				this.getY() - vec.getPosition().getY()); // 通过坐标直接相加
+		return ps;
+	}
+	
+	/**
+	 * 获取坐标的信息，格式为(x,y)
 	 * @return 格式化的坐标
 	 */
-	public String getFormat() {
+	@Override
+	public String toString() {
 		return "(" + this.x + "," + this.y + ")";
 	}
 	

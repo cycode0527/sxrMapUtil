@@ -9,11 +9,11 @@ package top.sxrhhh.sxrMapUtil.util;
  */
 public class Vector {
 
-	private Direction direct = new Direction();	// 向量的方向
-	private double length;	// 向量的模
+	protected Direction direct = new Direction();	// 向量的方向
+	protected double length;	// 向量的模
 	
 	// 向量的坐标表示参数
-	private Position position = new Position();
+	protected Position position = new Position();
 	
 	/**
 	 * 空白构造函数
@@ -36,6 +36,34 @@ public class Vector {
 	 */
 	public Vector(Position position) {
 		this.setPosition(position);
+	}
+	
+	/**
+	 * 向量加法所得新向量
+	 * @param other 另一个向量
+	 * @return 所得新向量
+	 */
+	public Vector VectorPlus(Vector other) {
+		Vector vec = new Vector(); // 创建新向量
+		Position ps = new Position(this.position.getX() + other.position.getX(),
+				this.position.getY() + other.position.getY());	// 直接相加创建新坐标
+		vec.setPosition(ps);	// 用所得坐标赋值
+		
+		return vec;
+	}
+	
+	/**
+	 * 向量减法所得新向量
+	 * @param other 另一个向量
+	 * @return 所得新向量
+	 */
+	public Vector VectorMinus(Vector other) {
+		Vector vec = new Vector(); // 创建新向量
+		Position ps = new Position(this.getPosition().getX() - other.getPosition().getX(),
+				this.getPosition().getY() - other.getPosition().getY());	// 直接相减创建新坐标
+		vec.setPosition(ps);	// 用所得坐标赋值
+		
+		return vec;
 	}
 	
 	/**
@@ -68,6 +96,15 @@ public class Vector {
 	 */
 	public void setVector(Vector vt) {
 		this.setPosition(vt.position);	// 通过坐标设置本向量
+	}
+	
+	/**
+	 * 返回本向量的详细信息
+	 */
+	@Override
+	public String toString() {
+		return "坐标：" + this.position.toString() + "\n" + this.direct.toString() + 
+				"\n模长：" + this.getLength();
 	}
 
 	
