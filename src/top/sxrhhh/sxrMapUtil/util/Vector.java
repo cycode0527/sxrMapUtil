@@ -67,6 +67,56 @@ public class Vector {
 	}
 	
 	/**
+	 * 向量自增，即向量加法并赋值自身
+	 * @param other 被加的向量
+	 */
+	public void VectorIncrease(Vector other) {
+		Vector vec = this.VectorPlus(other);	// 创建临时向量
+		this.setVector(vec); // 将本对象赋值
+	}
+	
+	/**
+	 * 向量自减，即向量减法并赋值自身
+	 * @param other 被减的向量
+	 */
+	public void VectorReduce(Vector other) {
+		Vector vec = this.VectorMinus(other);	// 创建临时向量
+		this.setVector(vec); // 将本对象赋值
+	}
+	
+	/**
+	 * 将自身逆时针旋转一个角度
+	 * @param degree 逆时针旋转的角度
+	 */
+	public void turnDegree(double degree) {
+		this.direct.degreeIncrease(degree);	// 直接逆时针旋转方向
+	}
+	
+	/**
+	 * 将自身逆时针旋转一个弧度
+	 * @param radians 逆时针旋转的弧度
+	 */
+	public void turnRadians(double radians) {
+		this.direct.radiansIncrease(radians); // 直接逆时针旋转方向
+	}
+	
+	/**
+	 * 逆时针旋转
+	 * @param angle 旋转的角
+	 */
+	public void turnIncrease(Angle angle) {
+		this.direct.increase(angle); // 将自身方向自增
+	}
+	
+	/**
+	 * 顺时针旋转
+	 * @param angle 旋转的角
+	 */
+	public void turnReduce(Angle angle) {
+		this.direct.reduce(angle); // 将自身方向自减
+	}
+	
+	/**
 	 * 通过方向与模设置向量
 	 * @param direct 方向
 	 * @param length 模
@@ -78,6 +128,23 @@ public class Vector {
 		this.position.setX(length * Math.cos(direct.getRadians()));	// 余弦值求x坐标
 		this.position.setY(length * Math.sin(direct.getRadians())); // 正弦值求y坐标
 	}
+	
+	/**
+	 * 只设置方向，不设置模
+	 * @param direct 设置的方向
+	 */
+	public void setDirect(Direction direct) {
+		this.setDirect(direct, this.length);
+	}
+	
+	/**
+	 * 只设置模，不设置方向
+	 * @param length 设置的模
+	 */
+	public void setLength(double length) {
+		this.setDirect(this.direct, length);
+	}
+	
 	
 	/**
 	 * 通过直角坐标设置向量
@@ -113,17 +180,11 @@ public class Vector {
 		return direct;
 	}
 
-	public void setDirect(Direction direct) {
-		this.direct = direct;
-	}
 
 	public double getLength() {
 		return length;
 	}
 
-	public void setLength(double length) {
-		this.length = length;
-	}
 
 	public Position getPosition() {
 		return position;
