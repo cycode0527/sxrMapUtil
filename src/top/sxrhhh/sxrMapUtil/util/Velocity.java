@@ -31,18 +31,7 @@ public class Velocity extends Vector {
 		super(position);
 	}
 	
-	/**
-	 * 通过位移与所需秒数求得速度
-	 * @param vector 位移
-	 * @param time 所需时间秒数
-	 */
-	public static Velocity getVelocityFromVectorAndTime(Vector vector, double time) {
-		Velocity vel = new Velocity();
-		vel.setVector(vector); // 保留方向
-		vel.setSpeed(vector.length / time); // 路程除以时间等于速率
-		
-		return vel;
-	}
+	
 	
 	/**
 	 * 设置速率，改变模长
@@ -52,6 +41,10 @@ public class Velocity extends Vector {
 		super.setLength(speed);
 	}
 	
+	/**
+	 * 获取速率，单位每秒
+	 * @return 该速度的速率（模长）
+	 */
 	public double getSpeed() {
 		return super.getLength();
 	}

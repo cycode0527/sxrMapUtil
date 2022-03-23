@@ -18,6 +18,14 @@ public class Angle {
 	 */
 	public Angle() {
 	}
+	
+	/**
+	 * 通过弧度初始化本角
+	 * @param radians
+	 */
+	public Angle(double radians) {
+		this.setRadians(radians);
+	}
 
 //	/**
 //	 * 输入弧度制构造函数
